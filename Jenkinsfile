@@ -14,11 +14,10 @@ pipeline {
             
                 }
             }
-        }
         stage('deploy') {
             steps {
                     echo 'building the docker image...'
                     }
-                
+                }
             }
         }
