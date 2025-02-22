@@ -1,15 +1,11 @@
 def buildJar() {
-    echo 'building the application..'
-    sh 'mvn package'
+    echo 'testing the application..'
+    echo "executing pipeline for branch $BRANCH_NAME"
 }
 
 def buildImage() {
-    echo 'building the docker image..'
-    withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-    sh 'docker build -t caster0515/demo-app:jma-2.0 .'
-    sh 'echo $PASS | docker login -u $USER --password-stdin'
-    sh 'docker push caster0515/demo-app:jma-2.0'
- } 
+    echo 'building the  image..'
+
 }
 
 def deployApp() {
