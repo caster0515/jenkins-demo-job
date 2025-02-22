@@ -1,11 +1,11 @@
-df gv
+def gv
 
 pipeline {
     agent any
     
     stages {
 
-        stage('init') {
+    stage('init') {
         steps {
             script {
                 gv = load "script.groovy"
