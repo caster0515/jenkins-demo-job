@@ -12,9 +12,10 @@ pipeline {
            steps {
             script {
                 gv = load "script.groovy"
-            }
+             }
            }
         }
+
         stage('build jar') {
             steps {
                 script {
@@ -30,9 +31,8 @@ pipeline {
                    }
                 }
             }
-        }
 
-        stage('deploy') {
+            stage('deploy') {
             steps {
                 script {
                  gv.deployApp()
@@ -40,3 +40,4 @@ pipeline {
              }
         }
     }
+}
