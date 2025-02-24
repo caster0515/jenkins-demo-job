@@ -1,50 +1,43 @@
+#!/usr/bin/env groovy
+@Library('jenkins-sl')
+
 def gv
 
-pipeline {
+pipeline {   
     agent any
-    
+    tools {
+        maven 'Maven'
+    }
     stages {
-
-    stage('init') {
-        steps {
-            script {
-                gv = load "script.groovy"
+        stage("init") {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
             }
         }
+        stage("build jar") {
+            steps {
+                script {
+                  buildJar()
+                }
+            }
+        }
+
+        stage("build image") {
+            steps {
+                script {
+                  buildImage()
+                }
+            }
+        }
+
+        stage("deploy") {
+            steps {
+                script {
+                    gv.deployApp()
+                }
+            }
+        }               
     }
-
-        stage('test') {
-            steps {
-                script {
-                   gv.buildJar()
-                }
-            }
-        }
-
-            stage('build') {
-            when {
-                expression {
-                   BRANCH_NAME == "master" 
-                }
-            }    
-            steps {
-                script {
-                  gv.buildImage()
-                   }
-                }
-            }
-
-            stage('deploy') {
-            when {
-             expression {
-                   BRANCH_NAME == "master" 
-                }
-            }
-            steps {
-                script {
-                 gv.deployApp()
-                }
-             }
-        }
-    }
-}
+} 
