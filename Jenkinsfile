@@ -1,5 +1,9 @@
 #!/usr/bin/env groovy
-@Library('jenkins-sl')
+library identifier: 'jenkins-sl@master', retriever: modernSCM(
+        [$class: 'GitSCMSource',
+        remote: 'https://github.com/caster0515/jenkins-sl.git',
+        credentialsId: 'git-credentials'])
+
 
 def gv
 
