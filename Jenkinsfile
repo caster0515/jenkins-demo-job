@@ -27,7 +27,7 @@ pipeline {
         stage("build image") {
             steps {
                 script {
-                  buildImage()
+                  buildImage 'caster0515/demo-app:jma-3.0'
                 }
             }
         }
