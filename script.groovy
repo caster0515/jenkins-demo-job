@@ -1,5 +1,6 @@
 def buildJar() {
     echo 'testing the application..'
+    echo 'testing the webhook..'
 }
 
 def buildImage() {
