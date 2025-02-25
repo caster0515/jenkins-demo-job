@@ -1,6 +1,5 @@
 def buildJar() {
     echo 'testing the application..'
-    echo "executing pipeline for branch $BRANCH_NAME"
 }
 
 def buildImage() {
